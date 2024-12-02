@@ -32,11 +32,13 @@ const ProfileForm = (props) => {
         <label htmlFor="name">Name: </label>
         <input id="profileName" type="text" name="name" placeholder="Name" />
 
+        <label htmlFor="about">Describe Yourself: </label>
+        <input id="profileAbout" type="textarea" name="about" placeholder="Describe Yourself" />
+
         <label htmlFor="age">Age: </label>
         <input id="profileAge" type="number" min="0" name="age" />
 
-        <label htmlFor="about">Describe Yourself: </label>
-        <input id="profileAbout" type="textarea" name="about" placeholder="Describe Yourself" />
+
 
         <input className="makeProfileSubmit" type="submit" value="Make Profile" />
       </form>
