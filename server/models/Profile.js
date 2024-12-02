@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const _ = require('underscore');
 
 const setName = (name) => _.escape(name).trim();
-const setFood = (favoriteFood) => _.escape(favoriteFood).trim();
+const setAbout = (about) => _.escape(about).trim();
 
-const DomoSchema = new mongoose.Schema({
+const ProfileSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -16,6 +16,12 @@ const DomoSchema = new mongoose.Schema({
     min: 0,
     required: true,
   },
+  about: {
+    type: String,
+    required: true,
+    trim: true,
+    set: setAbout,
+  },
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
@@ -25,19 +31,13 @@ const DomoSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  favoriteFood: {
-    type: String,
-    required: true,
-    trim: true,
-    set: setFood,
-  },
 });
 
-DomoSchema.statics.toAPI = (doc) => ({
+ProfileSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   age: doc.age,
-  favoriteFood: doc.favoriteFood,
+  about: doc.about,
 });
 
-const DomoModel = mongoose.model('Domo', DomoSchema);
-module.exports = DomoModel;
+const ProfileModel = mongoose.model('Profile', ProfileSchema);
+module.exports = ProfileModel;

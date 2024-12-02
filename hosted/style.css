@@ -17,7 +17,7 @@ html, body {
 nav {
     width: 100%;
     height: 50px;
-    background-color: #55acee;
+    background-color: #fc84b0;
 }
 
 nav:nth-child(1) {
@@ -38,27 +38,27 @@ nav:nth-child(1) {
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
-    background-color: #55acee;
+    background-color: #fc84b0;
     transition: background-color 0.4s ease;
 }
 
 .navlink a:hover {
     transition: background-color 0.8s ease;
-    background-color: #66bdff;
+    background-color: #fdafcc;
 }
 
-.domoForm {
-    border: 2px solid #338acc;
+.profileForm {
+    border: 2px solid #fa6199;
     height: 45px;
     width: 1000px;
     margin-top:0px;
     padding-top:10px;
-    background-color: #55acee;
+    background-color: #fc84b0;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
 }
 
-.domoForm label {
+.profileForm label {
     display: inline-block;
     width: 100px;
     margin-left: 10px;
@@ -67,27 +67,27 @@ nav:nth-child(1) {
     color: white;
 }
 
-.domoForm input[type=text] {
+.profileForm input[type=text] {
     float:left;
 }
 
-.makeDomoSubmit {
+.makeProfileSubmit {
     transition: background-color 0.4s ease;
     display: inline;
     width: 90px;
-    background-color: #55acee;
+    background-color: #fc84b0;
     border-radius: 2px;
     color: white;
     text-decoration: none;
 }
 
-.makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
+.makeProfileSubmit:link, .makeProfileSubmit:visited, .makeProfileSubmit:hover, .makeProfileSubmit:active {
     color: white;
 }
 
-.makeDomoSubmit:hover {
+.makeProfileSubmit:hover {
     transition: background-color 0.4s ease;
-    background-color: #338acc;
+    background-color: #fa6199;
 }
 
 .mainForm {
@@ -118,7 +118,7 @@ nav:nth-child(1) {
     margin-top: 14px;
     font-size: 1.2em;
     width: 100px;
-    background-color: #55acee;
+    background-color: #fc84b0;
     border-radius: 2px;
     border-color: #66acee;
     padding: 3px 0px;
@@ -132,7 +132,7 @@ nav:nth-child(1) {
 
 .formSubmit:hover {
     transition: background-color 0.4s ease;
-    background-color: #338acc;
+    background-color: #fa6199;
 }
 
 #user, #pass, #pass2 {
@@ -144,14 +144,14 @@ nav:nth-child(1) {
 
 #user:focus, #pass:focus, #pass2:focus {
     outline: none;
-    box-shadow: 0px 0px 1px 1px #55acee;
+    box-shadow: 0px 0px 1px 1px #fc84b0;
 }
 
 .hidden {
     display: none;
 }
 
-#domoMessage {
+#appMessage {
     top: 250px;
     width: 250px;
     height: 650px;
@@ -161,7 +161,7 @@ nav:nth-child(1) {
     overflow: hidden;
 }
 
-#domoMessage h3 {
+#appMessage h3 {
     width: 200px;
     position: absolute;
     top: 0px;
@@ -181,7 +181,7 @@ nav:nth-child(1) {
     font-style: italic;
 }
 
-#domo {
+#profile {
     z-index: 225;
     margin-top: -20px;
     margin-left: 135px;
@@ -192,36 +192,36 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 
-#domos {
+#profiles {
     width: 40%;
     min-width: 400px;
-    border: 2px solid #55acee;
+    border: 2px solid #fc84b0;
     border-radius: 4px;
     margin: 0 auto;
     margin-top: 100px;
 }
 
-.domo {
+.profile {
     width: 95%;
     margin: 0 auto;
     margin-top: 2px;
     margin-bottom: 2px;
-    border: 2px solid #55acee;
+    border: 2px solid #fc84b0;
     border-radius: 4px;
-    background-color: #55acee;
+    background-color: #fc84b0;
     padding: 10px;
     min-height:60px;
     overflow: hidden;
 }
 
-.domo:hover {
+.profile:hover {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
     background-color: #66bfff;
 }
 
-img.domoFace {
+img.profilePic {
     margin-left: 25px;
     margin-right: 10px;
     height: 50px;
@@ -231,7 +231,7 @@ img.domoFace {
     float:left;
 }
 
-h3.emptyDomo {
+h3.emptyProfile {
     width: 400px;
     font-size: 1.5em;
     margin: 0 auto;
@@ -239,7 +239,7 @@ h3.emptyDomo {
     margin-top: 18px;
 }
 
-h3.domoName {
+h3.profileName {
     float:left;
     width: 200px;
     font-weight: bold;
@@ -247,7 +247,7 @@ h3.domoName {
     font-size: 1.5em;
 }
 
-h3.domoAge {
+h3.profileAge {
     float:right;
     text-align: left;
     width: 100px;
@@ -256,7 +256,7 @@ h3.domoAge {
     font-size: 1.5em;
 }
 
-h3.domoFavFood {
+h3.profileAbout {
     float:left;
     width: 300px;
     font-weight: bold;
@@ -264,10 +264,10 @@ h3.domoFavFood {
     font-size: 1.5em;
 }
 
-.domo:first-child {
+.profile:first-child {
     margin-top: 10px;
 }
 
-.domo:last-child {
+.profile:last-child {
     margin-bottom:10px;
 }

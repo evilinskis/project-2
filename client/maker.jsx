@@ -3,91 +3,105 @@ const React = require('react');
 const {useState, useEffect} = React;
 const {createRoot} = require('react-dom/client');
 
-const handleDomo = (e, onDomoAdded) => {
+const handleProfile = (e, onProfileMade) => {
   e.preventDefault();
   helper.hideError();
 
-  const name = e.target.querySelector('#domoName').value;
-  const age = e.target.querySelector('#domoAge').value;
-  const favoriteFood = e.target.querySelector('#domoFavFood').value;
+  const name = e.target.querySelector('#profileName').value;
+  const age = e.target.querySelector('#profileAge').value;
+  const about = e.target.querySelector('#profileAbout').value;
 
-  if(!name || !age || !favoriteFood) {
+  if(!name || !age || !about) {
     helper.handleError('All fields are required!');
     return false;
   }
 
-  helper.sendPost(e.target.action, {name, age, favoriteFood}, onDomoAdded);
+  helper.sendPost(e.target.action, {name, age, about}, onProfileMade);
   return false;
 }
 
-const DomoForm = (props) => {
+const ProfileForm = (props) => {
   return(
-    <form id="domoform"
-      onSubmit={(e) => handleDomo(e, props.triggerReload)}
-      name="domoForm"
-      action="/maker"
-      method="POST"
-      className="domoForm"
-    >
-      <label htmlFor="name">Name: </label>
-      <input id="domoName" type="text" name="name" placeholder="Domo Name" />
-      <label htmlFor="domoFavFood">Favorite Food: </label>
-      <input id="domoFavFood" type="text" name="domoFavFood" placeholder="Favorite Food" />
-      <label htmlFor="age">Age: </label>
-      <input id="domoAge" type="number" min="0" name="age" />
-      <input className="makeDomoSubmit" type="submit" value="Make Domo" />
-    </form>
+      <form id="profileform"
+        onSubmit={(e) => handleProfile(e, props.triggerReload)}
+        name="profileForm"
+        action="/maker"
+        method="POST"
+        className="profileForm"
+      >
+        <label htmlFor="name">Name: </label>
+        <input id="profileName" type="text" name="name" placeholder="Name" />
+
+        <label htmlFor="age">Age: </label>
+        <input id="profileAge" type="number" min="0" name="age" />
+
+        <label htmlFor="about">Describe Yourself: </label>
+        <input id="profileAbout" type="textarea" name="about" placeholder="Describe Yourself" />
+
+        <input className="makeProfileSubmit" type="submit" value="Make Profile" />
+      </form>
   );
 };
 
-const DomoList = (props) => {
-  const [domos, setDomos] = useState(props.domos);
+const UserProfile = (props) => {
+  return(
+      <div id="UserProfile">
+        <img src=""></img>
+        <h3 id="ownName"></h3>
+        <h3 id="ownAge"></h3>
+        <p id="ownAbout"></p>
+      </div>
+  );
+};
+
+const ProfileList = (props) => {
+  const [profiles, setProfiles] = useState(props.profiles);
 
   useEffect(() => {
-    const loadDomosFromServer = async () => {
-      const response = await fetch ('/getDomos');
+    const loadProfilesFromServer = async () => {
+      const response = await fetch ('/getProfiles');
       const data = await response.json();
-      setDomos(data.domos);
+      setProfiles(data.profiles);
     };
-    loadDomosFromServer();
-  }, [props.reloadDomos]);
+    loadProfilesFromServer();
+  }, [props.reloadProfiles]);
 
-  if(domos.length === 0) {
+  if(profiles.length === 0) {
     return (
-      <div className="domoList">
-        <h3 className="emptyDomo">No Domos Yet!</h3>
+      <div className="profileList">
+        <h3 className="emptyProfile">No Matches Yet!</h3>
       </div>
     );
   }
 
-  const domoNodes = domos.map(domo => {
+  const profileNodes = profiles.map(profile => {
     return(
-      <div key={domo.id} className="domo">
-        <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
-        <h3 className="domoName">Name: {domo.name}</h3>
-        <h3 className="domoAge">Age: {domo.age}</h3>
-        <h3 className="domoFavFood">Favorite Food: {domo.favoriteFood}</h3>
+      <div key={profile.id} className="profile">
+        <img src="/assets/img/profilepic.jpg" alt="profile picture" className="profilePic" />
+        <h3 className="profileName">Name: {profile.name}</h3>
+        <h3 className="profileAge">Age: {profile.age}</h3>
+        <h3 className="profileAbout">About: {profile.about}</h3>
       </div>
     );
   });
 
   return (
-    <div className="domoList">
-      {domoNodes}
+    <div className="profileList">
+      {profileNodes}
     </div>
   );
 };
 
 const App = () => {
-  const [reloadDomos, setReloadDomos] = useState(false);
+  const [reloadProfiles, setReloadProfiles] = useState(false);
 
   return (
-    <div>
-      <div id="makeDomo">
-        <DomoForm triggerReload={() => setReloadDomos(!reloadDomos)} />
+    <div id="wrapper">
+      <div id="makeProfile">
+        <ProfileForm triggerReload={() => setReloadProfiles(!reloadProfiles)} />
       </div>
-      <div id="domos">
-        <DomoList domos={[]} reloadDomos={reloadDomos} />
+      <div id="profiles">
+        <ProfileList profiles={[]} reloadProfiles={reloadProfiles} />
       </div>
     </div>
   );
