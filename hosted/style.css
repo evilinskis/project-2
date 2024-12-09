@@ -4,6 +4,8 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color:lightgoldenrodyellow;
 }
 
 #logo {
@@ -47,28 +49,30 @@ nav:nth-child(1) {
     background-color: #fdafcc;
 }
 
-.profileForm {
-    border: 2px solid #fa6199;
-    height: 45px;
-    width: 1000px;
-    margin-top:0px;
-    padding-top:10px;
+.form {
     background-color: #fc84b0;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
+    border-radius: 25px;
+    border: 5px solid #fa6199;
+    margin: 10px;
+    padding: 10px;
 }
 
+#profileForm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    border-radius: 25px 25px 0px 0px;
+    border-bottom-style: none;
+    width: 91%;
+    margin:0px;
+}
+
+#profileForm textarea{
+    height: 50px;
+}
 .profileForm label {
     display: inline-block;
-    width: 100px;
-    margin-left: 10px;
-    font-size: 1.2em;
-    float: left;
     color: white;
-}
-
-.profileForm input[type=text] {
-    float:left;
 }
 
 .makeProfileSubmit {
@@ -117,10 +121,8 @@ nav:nth-child(1) {
     margin: 0 auto;
     margin-top: 14px;
     font-size: 1.2em;
-    width: 100px;
     background-color: #fc84b0;
-    border-radius: 2px;
-    border-color: #66acee;
+    border-radius: 25px;
     padding: 3px 0px;
     color: white;
     text-decoration: none;
@@ -151,74 +153,33 @@ nav:nth-child(1) {
     display: none;
 }
 
-#appMessage {
-    top: 250px;
-    width: 250px;
-    height: 650px;
-    position: absolute;
-    z-index: 200;
-    right: 0px;
-    overflow: hidden;
-}
-
-#appMessage h3 {
-    width: 200px;
-    position: absolute;
-    top: 0px;
-    left: 20px;
-}
-
-#speech {
-    height: 120px;
-    width: 250px;
-    z-index:300;
-}
-
-#errorMessage {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: red;
-    font-style: italic;
-}
 
 #profile {
-    z-index: 225;
-    margin-top: -20px;
-    margin-left: 135px;
-    height: 450px;
-    width: 300px;
     -ms-transform: rotate(330deg);
     -webkit-transform: rotate(330deg); 
     transform: rotate(330deg);
 }
 
 #profiles {
-    width: 40%;
-    min-width: 400px;
-    border: 2px solid #fc84b0;
-    border-radius: 4px;
+    border-radius: 25px;
     margin: 0 auto;
     margin-top: 100px;
 }
 
 .profile {
-    width: 95%;
     margin: 0 auto;
     margin-top: 2px;
     margin-bottom: 2px;
-    border: 2px solid #fc84b0;
-    border-radius: 4px;
-    background-color: #fc84b0;
+    border-radius: 25px;
+    background-color: white;
     padding: 10px;
     min-height:60px;
     overflow: hidden;
+    border: 5px solid #fa6199;
 }
 
 .profile:hover {
-    transition: border-color 0.2s ease-out;
-    border-color: rgba(255,255,255, 0.8);
-    transition: background-color 2.6s ease-out;
-    background-color: #66bfff;
+
 }
 
 img.profilePic {
@@ -240,26 +201,22 @@ h3.emptyProfile {
 }
 
 h3.profileName {
-    float:left;
-    width: 200px;
+    float: left;
     font-weight: bold;
     padding-left: 65px;
     font-size: 1.5em;
 }
 
 h3.profileAge {
-    float:right;
+    float: left;
     text-align: left;
-    width: 100px;
     font-weight: bold;
     padding-right: 40px;
     font-size: 1.5em;
 }
 
-h3.profileAbout {
+p.profileAbout {
     float:left;
-    width: 300px;
-    font-weight: bold;
     padding-left: 65px;
     font-size: 1.5em;
 }
@@ -270,4 +227,46 @@ h3.profileAbout {
 
 .profile:last-child {
     margin-bottom:10px;
+}
+
+#wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+    justify-content: space-between;
+}
+
+#user{
+    width: 20%;
+}
+
+#others{
+    width: 60%;
+}
+
+#userProfile{
+    background-color: white;
+    border-radius: 0px 0px 25px 25px;
+    margin: 0 auto;
+    margin-bottom: 2px;
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+    border: 5px solid #fa6199;
+    border-top-style: none;
+}
+
+.pWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#advert{
+    width:8%;
+    height: 100vh;
+    text-align: center;
+    background-color: white;
+    border: 2px solid black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

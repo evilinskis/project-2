@@ -3,6 +3,7 @@ const models = require('../models');
 const { Account } = models;
 
 const loginPage = (req, res) => res.render('login');
+const notFoundPage = (req, res) => res.render('notfound');
 
 const logout = (req, res) => {
   req.session.destroy();
@@ -85,4 +86,5 @@ module.exports = {
   logout,
   signup,
   changePass,
+  notFoundPage,
 };

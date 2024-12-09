@@ -15,8 +15,10 @@ const router = (app) => {
 
   app.get('/maker', mid.requiresLogin, controllers.Profile.makerPage);
   app.post('/maker', mid.requiresLogin, controllers.Profile.makeProfile);
+  app.post('/search', mid.requiresLogin, controllers.Profile.searchProfiles);
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.get('*', mid.requiresSecure, mid.requiresLogout, controllers.Account.notFoundPage);
 };
 
 module.exports = router;

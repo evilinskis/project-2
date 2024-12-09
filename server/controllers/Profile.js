@@ -67,9 +67,42 @@ const getProfiles = async (req, res) => {
   }
 };
 
+// find profiles based on search parameters
+const searchProfiles = async (req, res) => {
+  try {
+    let docs;
+
+    // search with each parameter (if it exists) to narrow down results
+    if (req.body.name) {
+      docs = await Profile.find({ name: req.body.name }).select('name age about').lean().exec();
+    }
+    if (req.body.age) {
+      docs = await Profile.find({ age: req.body.age }).select('name age about').lean().exec();
+    }
+    if (req.body.about) {
+      docs = await Profile.find({ about: req.body.about }).select('name age about').lean().exec();
+    }
+
+    return res.json({ profiles: docs });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error retrieving profiles!' });
+  }
+};
+
+/*
+function checkOwner(docs, req) {
+  docs.forEach((profile) => {
+    if (profile.owner === req.session.account._id) {
+    }
+  });
+}
+*/
+
 module.exports = {
   makerPage,
   makeProfile,
   getOwnProfile,
   getProfiles,
+  searchProfiles,
 };
