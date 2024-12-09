@@ -63,7 +63,7 @@ nav:nth-child(1) {
     row-gap: 2px;
     border-radius: 25px 25px 0px 0px;
     border-bottom-style: none;
-    width: 91%;
+    padding: 10px;
     margin:0px;
 }
 
@@ -75,21 +75,23 @@ nav:nth-child(1) {
     color: white;
 }
 
-.makeProfileSubmit {
+.appSubmit {
     transition: background-color 0.4s ease;
     display: inline;
-    width: 90px;
+    padding: 5px;
     background-color: #fc84b0;
-    border-radius: 2px;
+    border-radius: 20px;
+    border-color: #fa6199;
+    border-style: solid;
     color: white;
     text-decoration: none;
 }
 
-.makeProfileSubmit:link, .makeProfileSubmit:visited, .makeProfileSubmit:hover, .makeProfileSubmit:active {
+.appSubmit:link, .appSubmit:visited, .appSubmit:hover, .appSubmit:active {
     color: white;
 }
 
-.makeProfileSubmit:hover {
+.appSubmit:hover {
     transition: background-color 0.4s ease;
     background-color: #fa6199;
 }
@@ -122,8 +124,10 @@ nav:nth-child(1) {
     margin-top: 14px;
     font-size: 1.2em;
     background-color: #fc84b0;
-    border-radius: 25px;
-    padding: 3px 0px;
+    border-color: #fa6199;
+    border-radius: 20px;
+    border-style: solid;
+    padding: 5px;
     color: white;
     text-decoration: none;
 }
@@ -142,6 +146,8 @@ nav:nth-child(1) {
     font-size: 1.1em;
     width: 180px;
     border-radius: 6px;
+    border-color: #fa6199;
+    border-style: solid;
 }
 
 #user:focus, #pass:focus, #pass2:focus {
@@ -234,13 +240,14 @@ p.profileAbout {
     flex-direction: row;
     gap: 2%;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
-#user{
+#userMenu{
     width: 20%;
 }
 
-#others{
+#profilesMenu{
     width: 60%;
 }
 
@@ -270,3 +277,13 @@ p.profileAbout {
     border: 2px solid black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+#profileAbout{
+    height: 50px;
+}
+
+.formInput{
+    border-color: #fa6199;
+    border-style: solid;
+}
+

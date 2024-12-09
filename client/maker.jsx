@@ -42,15 +42,15 @@ const ProfileForm = (props) => {
         className="form"
       >
         <label htmlFor="name">Name: </label>
-        <input id="profileName" type="text" name="name" placeholder="Name" />
+        <input id="profileName" type="text" name="name" className="formInput" placeholder="Name" />
 
         <label htmlFor="about">Describe Yourself: </label>
-        <input id="profileAbout" type="textarea" name="about" placeholder="Describe Yourself" />
+        <input id="profileAbout" type="textarea" className="formInput" name="about" placeholder="Describe Yourself" />
 
         <label htmlFor="age">Age: </label>
-        <input id="profileAge" type="number" min="0" name="age" />
+        <input id="profileAge" type="number" min="0" className="formInput" name="age" />
 
-        <input className="makeProfileSubmit" type="submit" value="Edit Profile" />
+        <input className="appSubmit" type="submit" value="Edit Profile" />
       </form>
   );
 };
@@ -65,15 +65,15 @@ const SearchForm = (props) => {
         className="form"
     >
         <label htmlFor="name">Name: </label>
-        <input id="searchName" type="text" name="name" placeholder="Name" />
+        <input id="searchName" type="text" name="name" className="formInput" placeholder="Name" />
 
         <label htmlFor="about">Keywords: </label>
-        <input id="searchAbout" type="textarea" name="about" placeholder="Keywords" />
+        <input id="searchAbout" type="textarea" className="formInput" name="about" placeholder="Keywords" />
 
         <label htmlFor="age">Age: </label>
-        <input id="searchAge" type="number" min="0" name="age" />
+        <input id="searchAge" type="number" min="0" className="formInput" name="age" />
 
-        <input className="makeSearcjSubmit" type="submit" value="Search" />
+        <input className="appSubmit" type="submit" value="Search" />
     </form>
   );
 };
@@ -191,11 +191,11 @@ const App = () => {
   return (
       <div id="wrapper">
         <AdSpace />
-        <div id="user">
+        <div id="userMenu">
           <ProfileForm triggerReload={() => setReloadProfile(!reloadProfile)} />
           <UserProfile profile={[]} reloadProfile={reloadProfile}/>
         </div>
-        <div id="others">
+        <div id="profilesmenu">
           <SearchForm triggerReload={() => setReloadProfiles(!reloadProfiles)} />
           <ProfileList profiles={[]} reloadProfiles={reloadProfiles} />
         </div>
