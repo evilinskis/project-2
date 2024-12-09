@@ -169,7 +169,6 @@ nav:nth-child(1) {
 #profiles {
     border-radius: 25px;
     margin: 0 auto;
-    margin-top: 100px;
 }
 
 .profile {
@@ -182,6 +181,9 @@ nav:nth-child(1) {
     min-height:60px;
     overflow: hidden;
     border: 5px solid #fa6199;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 .profile:hover {
@@ -199,32 +201,20 @@ img.profilePic {
 }
 
 h3.emptyProfile {
-    width: 400px;
-    font-size: 1.5em;
-    margin: 0 auto;
     text-align: center;
-    margin-top: 18px;
 }
 
 h3.profileName {
     float: left;
-    font-weight: bold;
-    padding-left: 65px;
-    font-size: 1.5em;
 }
 
 h3.profileAge {
-    float: left;
+    float: right;
     text-align: left;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
 }
 
 p.profileAbout {
     float:left;
-    padding-left: 65px;
-    font-size: 1.5em;
 }
 
 .profile:first-child {
@@ -244,11 +234,11 @@ p.profileAbout {
 }
 
 #userMenu{
-    width: 20%;
+    width: 25%;
 }
 
 #profilesMenu{
-    width: 60%;
+    width: 55%;
 }
 
 #userProfile{
@@ -257,16 +247,19 @@ p.profileAbout {
     margin: 0 auto;
     margin-bottom: 2px;
     padding: 10px;
-    min-height:60px;
     overflow: hidden;
     border: 5px solid #fa6199;
     border-top-style: none;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 .pWrapper{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    gap: 5vw;
+    justify-content: start;
 }
 
 #advert{

@@ -28,6 +28,7 @@ const handleSearch = (e, onSearch) => {
   const age = e.target.querySelector('#searchAge').value;
   const about = e.target.querySelector('#searchAbout').value;
   
+  //change this to query parameters?
   helper.sendPost(e.target.action, {name, age, about}, onSearch);
   return false;
 }
@@ -80,7 +81,6 @@ const SearchForm = (props) => {
 
 const UserProfile = (props) => {
 
-  /*
   const [profile, setProfile] = useState(props.profile);
 
   useEffect(() => {
@@ -101,14 +101,15 @@ const UserProfile = (props) => {
   }
 
   return(
-      <div id="userProfile">
+      <div id="userProfile" >
+      <div className='pWrapper'>
         <img src="/assets/img/profilepic.jpg" className="profilePic"></img>
         <h3 id="ownName">{profile.name}</h3>
         <h3 id="ownAge">{profile.age}</h3>
+      </div>
         <p id="ownAbout">{profile.about}</p>
       </div>
   );
-  */
 
     return(
       <div id="userProfile">
@@ -145,10 +146,12 @@ const ProfileList = (props) => {
   const profileNodes = profiles.map(profile => {
     return(
       <div key={profile.id} className="profile">
-        <img src="/assets/img/profilepic.jpg" alt="profile picture" className="profilePic" />
-        <h3 className="profileName">Name: {profile.name}</h3>
-        <h3 className="profileAge">Age: {profile.age}</h3>
-        <h3 className="profileAbout">About: {profile.about}</h3>
+        <div className='pWrapper'>
+          <img src="/assets/img/profilepic.jpg" alt="profile picture" className="profilePic" />
+          <h3 className="profileName">Name: {profile.name}</h3>
+          <h3 className="profileAge">Age: {profile.age}</h3>
+        </div>
+          <h3 className="profileAbout">About: {profile.about}</h3>
       </div>
     );
   });

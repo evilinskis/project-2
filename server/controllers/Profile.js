@@ -48,7 +48,7 @@ const getOwnProfile = async (req, res) => {
     const query = { owner: req.session.account._id };
     const docs = await Profile.find(query).select('name age about').lean().exec();
 
-    return res.json({ profiles: docs });
+    return res.json({ profile: docs });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: 'Error retrieving profile!' });
