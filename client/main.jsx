@@ -36,7 +36,7 @@ const ProfileForm = (props) => {
       <form id="profileForm"
         onSubmit={(e) => handleProfile(e, props.triggerReload)}
         name="profileForm"
-        action="/maker"
+        action="/main"
         method="POST"
         className="form"
       >
@@ -126,7 +126,7 @@ const ProfileList = (props) => {
 
   useEffect(() => {
     const loadProfilesFromServer = async () => {
-      const response = await fetch ('/getProfiles');
+      const response = await fetch ('/search');
       const data = await response.json();
       setProfiles(data.profiles);
     };
