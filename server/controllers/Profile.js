@@ -2,7 +2,7 @@ const models = require('../models');
 
 const { Profile } = models;
 
-const makerPage = (req, res) => res.render('app');
+const mainPage = (req, res) => res.render('app');
 
 const makeProfile = async (req, res) => {
   if (!req.body.name || !req.body.age || !req.body.about) {
@@ -100,7 +100,7 @@ function checkOwner(docs, req) {
 */
 
 module.exports = {
-  makerPage,
+  mainPage,
   makeProfile,
   getOwnProfile,
   getProfiles,

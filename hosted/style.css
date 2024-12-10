@@ -1,4 +1,4 @@
-html, body {
+body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -6,47 +6,57 @@ html, body {
     overflow-x: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color:lightgoldenrodyellow;
+    font-size: 1.3em;
+    color: white;
 }
 
 #logo {
-    height: 40px;
-    width: 40;
-    padding-top: 5px;
-    float:left;
-    border-radius: 8px;
+    height: 50x;
+    width: 50px;
+    padding-top: 35px;
 }
 
 nav {
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: #fc84b0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navLeft{
+    display: flex;
+    flex-direction: row;
+}
+
+h1{
+    padding-top: 5px;
+    padding-left: 20px;
+    font-size: 2em;
 }
 
 nav:nth-child(1) {
-    padding-left: 25px;
+    padding-right: 30px;
 }
 
 .navlink {
     padding: 5px;
     padding-top: 12px;
-    padding-left: 20px;
-    color: white;
+    padding-right: 20px;
     font-size: 1.3em;
-    float: left;
+    float: right;
 }
 
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
     color: white;
     text-decoration: none;
     padding: 5px;
-    border-radius: 4px;
-    background-color: #fc84b0;
-    transition: background-color 0.4s ease;
 }
 
 .navlink a:hover {
-    transition: background-color 0.8s ease;
-    background-color: #fdafcc;
+    text-decoration: underline;
 }
 
 .form {
@@ -72,19 +82,16 @@ nav:nth-child(1) {
 }
 .profileForm label {
     display: inline-block;
-    color: white;
 }
 
 .appSubmit {
-    transition: background-color 0.4s ease;
     display: inline;
     padding: 5px;
-    background-color: #fc84b0;
+    background-color: #fa6199;
     border-radius: 20px;
-    border-color: #fa6199;
-    border-style: solid;
-    color: white;
+    border-style: none;
     text-decoration: none;
+    color: white;
 }
 
 .appSubmit:link, .appSubmit:visited, .appSubmit:hover, .appSubmit:active {
@@ -92,16 +99,23 @@ nav:nth-child(1) {
 }
 
 .appSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: #fa6199;
+    text-decoration: underline;
 }
 
 .mainForm {
-    height: 300px;
-    width: 350px;
-    margin: 0 auto;
-    padding-top: 350px;
-    font-size: 1.2em;
+    width: 25vw;
+    padding: 2vh;
+    margin-top: 20vh;
+    margin-left: 37vw;
+    background-color: #fc84b0;
+    border: 5px solid #fa6199;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+    overflow: hidden;
+    border-radius: 25px;
+    
 }
 
 .mainForm h3 {
@@ -113,23 +127,18 @@ nav:nth-child(1) {
     width: 100px;
     margin-right: 10px;
     text-align: right;
-    font-size: 1.2em;
 }
 
 .formSubmit {
-    transition: background-color 0.4s ease;
     display: block;
     text-align: center;
     margin: 0 auto;
     margin-top: 14px;
-    font-size: 1.2em;
-    background-color: #fc84b0;
-    border-color: #fa6199;
+    background-color: #fa6199;
     border-radius: 20px;
-    border-style: solid;
     padding: 5px;
-    color: white;
     text-decoration: none;
+    border-style: none;
 }
 
 .formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
@@ -137,33 +146,15 @@ nav:nth-child(1) {
 }
 
 .formSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: #fa6199;
+    text-decoration: underline;
 }
 
 #user, #pass, #pass2 {
     text-align: center;
-    font-size: 1.1em;
     width: 180px;
     border-radius: 6px;
     border-color: #fa6199;
     border-style: solid;
-}
-
-#user:focus, #pass:focus, #pass2:focus {
-    outline: none;
-    box-shadow: 0px 0px 1px 1px #fc84b0;
-}
-
-.hidden {
-    display: none;
-}
-
-
-#profile {
-    -ms-transform: rotate(330deg);
-    -webkit-transform: rotate(330deg); 
-    transform: rotate(330deg);
 }
 
 #profiles {
@@ -176,7 +167,6 @@ nav:nth-child(1) {
     margin-top: 2px;
     margin-bottom: 2px;
     border-radius: 25px;
-    background-color: white;
     padding: 10px;
     min-height:60px;
     overflow: hidden;
@@ -184,10 +174,8 @@ nav:nth-child(1) {
     display: flex;
     flex-direction: column;
     align-content: center;
-}
-
-.profile:hover {
-
+    color: black;
+    background-color: white;
 }
 
 img.profilePic {
@@ -195,7 +183,7 @@ img.profilePic {
     margin-right: 10px;
     height: 50px;
     width: 50px;
-    border-radius: 4px;
+    border-radius: 10px;
     margin-top:10px;
     float:left;
 }
@@ -242,7 +230,6 @@ p.profileAbout {
 }
 
 #userProfile{
-    background-color: white;
     border-radius: 0px 0px 25px 25px;
     margin: 0 auto;
     margin-bottom: 2px;
@@ -253,12 +240,14 @@ p.profileAbout {
     display: flex;
     flex-direction: column;
     align-content: center;
+    color: black;
+    background-color: white;
 }
 
 .pWrapper{
     display: flex;
     flex-direction: row;
-    gap: 5vw;
+    gap: 1vw;
     justify-content: start;
 }
 
@@ -279,4 +268,5 @@ p.profileAbout {
     border-color: #fa6199;
     border-style: solid;
 }
+
 

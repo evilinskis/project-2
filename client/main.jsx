@@ -5,14 +5,13 @@ const {createRoot} = require('react-dom/client');
 
 const handleProfile = (e, onProfileMade) => {
   e.preventDefault();
-  helper.hideError();
 
   const name = e.target.querySelector('#profileName').value;
   const age = e.target.querySelector('#profileAge').value;
   const about = e.target.querySelector('#profileAbout').value;
 
   if(!name || !age || !about) {
-    helper.handleError('All fields are required!');
+    window.alert('All fields are required!');
     return false;
   }
 
@@ -22,7 +21,6 @@ const handleProfile = (e, onProfileMade) => {
 
 const handleSearch = (e, onSearch) => {
   e.preventDefault();
-  helper.hideError();
 
   const name = e.target.querySelector('#searchName').value;
   const age = e.target.querySelector('#searchAge').value;
@@ -104,10 +102,10 @@ const UserProfile = (props) => {
       <div id="userProfile" >
       <div className='pWrapper'>
         <img src="/assets/img/profilepic.jpg" className="profilePic"></img>
-        <h3 id="ownName">{profile.name}</h3>
-        <h3 id="ownAge">{profile.age}</h3>
+        <h3 id="ownName">Name: {profile.name}</h3>
+        <h3 id="ownAge">Age: {profile.age}</h3>
       </div>
-        <p id="ownAbout">{profile.about}</p>
+        <p id="ownAbout">About Me: {profile.about}</p>
       </div>
   );
 
@@ -151,7 +149,7 @@ const ProfileList = (props) => {
           <h3 className="profileName">Name: {profile.name}</h3>
           <h3 className="profileAge">Age: {profile.age}</h3>
         </div>
-          <h3 className="profileAbout">About: {profile.about}</h3>
+          <h3 className="profileAbout">About Me: {profile.about}</h3>
       </div>
     );
   });
@@ -176,13 +174,11 @@ const ProfileList = (props) => {
   )
 };
 
-//This would be fully dynamic in a full version
-//but it's a placeholder for now
 const AdSpace = (props) => {
   return(
     <div id="advert">
-      <h3 id="adTitle">CLICK NOW!!!</h3>
-      <p id="adText">HOT MILFS IN AREA</p>
+      <h3 id="adTitle">{props.title}</h3>
+      <p id="adText">{props.text}</p>
     </div>
   );
 };
@@ -193,7 +189,7 @@ const App = () => {
 
   return (
       <div id="wrapper">
-        <AdSpace />
+        <AdSpace title={"CLICK NOW!!"} text={"Hot Milfs In Area"}/>
         <div id="userMenu">
           <ProfileForm triggerReload={() => setReloadProfile(!reloadProfile)} />
           <UserProfile profile={[]} reloadProfile={reloadProfile}/>
@@ -202,7 +198,7 @@ const App = () => {
           <SearchForm triggerReload={() => setReloadProfiles(!reloadProfiles)} />
           <ProfileList profiles={[]} reloadProfiles={reloadProfiles} />
         </div>
-        <AdSpace />
+        <AdSpace title={"WIN BIG"} text={"Start Gambling Today!"}/>
       </div>
 
   );

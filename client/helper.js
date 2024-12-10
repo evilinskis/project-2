@@ -1,8 +1,3 @@
-const handleError = (message) => {
-  document.getElementById('errorMessage').textContent = message;
-  document.getElementById('appMessage').classList.remove('hidden');
-};
-
 const sendPost = async (url, data, handler) => {
   const response = await fetch(url, {
     method: 'POST',
@@ -13,7 +8,6 @@ const sendPost = async (url, data, handler) => {
   });
 
   const result = await response.json();
-  document.getElementById('appMessage').classList.add('hidden');
 
   if(result.redirect) {
     window.location = result.redirect;
@@ -28,12 +22,6 @@ const sendPost = async (url, data, handler) => {
   }
 };
 
-const hideError = () => {
-  document.getElementById('appMessage').classList.add('hidden');
-};
-
 module.exports = {
-  handleError,
   sendPost,
-  hideError,
 };

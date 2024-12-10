@@ -6,19 +6,22 @@
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
 <body> 
-  <nav><a href="/login"><img id="logo" src="/assets/img/bombicon.png" alt="bomb logo"/></a>
-    <div class="navlink"><a id="loginButton" href="/login">Login</a></div>
-    <div class="navlink"><a id="signupButton" href="/signup">Sign up</a></div>
-    <div class="navlink"><a id="passChangeButton" href="/changepass">Change Password</a></div>
+  <nav>
+    <div id="navLeft">
+      <a href="/login"><img id="logo" src="/assets/img/bombicon.png" alt="bomb logo"/></a>
+      <h1>Bombazon</h1>
+    </div>
+    <div id="navRight">
+        <div class="navlink"><a id="loginButton" href="/login">Login</a></div>
+      <div class="navlink"><a id="signupButton" href="/signup">Sign up</a></div>
+      <div class="navlink"><a id="passChangeButton" href="/changepass">Change Password</a></div>
+    </div>
   </nav>
   
   <section id="content">
 
   </section>
 
-  <div id="appMessage" class='hidden'>
-    <h3><span id="errorMessage"></span></h3>
-  </div>
   <script src="/assets/loginBundle.js"></script>
 </body>
 </html>
