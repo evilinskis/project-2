@@ -29,9 +29,7 @@ const handleSearch = (e, onSearch) => {
   const about = e.target.querySelector('#searchAbout').value;
 
   helper.sendPost(e.target.action, {name, age, about}, onSearch)
-  
-  const searchData = helper.sendSearch(e.target.action, {name, age, about});
-  return searchData;
+  return false;
 }
 
 //form for profile creation
