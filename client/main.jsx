@@ -3,6 +3,7 @@ const React = require('react');
 const {useState, useEffect} = React;
 const {createRoot} = require('react-dom/client');
 
+//handles profile creation from profile form
 const handleProfile = (e, onProfileMade) => {
   e.preventDefault();
 
@@ -19,24 +20,27 @@ const handleProfile = (e, onProfileMade) => {
   return false;
 }
 
+//handles profile searching from search form
 const handleSearch = (e, onSearch) => {
   e.preventDefault();
 
   const name = e.target.querySelector('#searchName').value;
   const age = e.target.querySelector('#searchAge').value;
   const about = e.target.querySelector('#searchAbout').value;
+
+  helper.sendPost(e.target.action, {name, age, about}, onSearch)
   
-  //change this to query parameters?
-  helper.sendPost(e.target.action, {name, age, about}, onSearch);
-  return false;
+  const searchData = helper.sendSearch(e.target.action, {name, age, about});
+  return searchData;
 }
 
+//form for profile creation
 const ProfileForm = (props) => {
   return(
       <form id="profileForm"
         onSubmit={(e) => handleProfile(e, props.triggerReload)}
         name="profileForm"
-        action="/main"
+        action="/makeProfile"
         method="POST"
         className="form"
       >
@@ -54,6 +58,7 @@ const ProfileForm = (props) => {
   );
 };
 
+//form for searching profiles
 const SearchForm = (props) => {
   return(
     <form id="searchForm"
@@ -77,6 +82,7 @@ const SearchForm = (props) => {
   );
 };
 
+//user's own profile display
 const UserProfile = (props) => {
 
   const [profile, setProfile] = useState(props.profile);
@@ -90,7 +96,7 @@ const UserProfile = (props) => {
     loadProfileFromServer();
   }, [props.reloadProfile]);
 
-  if(profile.length === 0) {
+  if(profile === null) {
     return (
       <div className="profile">
         <h3 className="emptyProfile">Create Your Profile!</h3>
@@ -108,30 +114,36 @@ const UserProfile = (props) => {
         <p id="ownAbout">About Me: {profile.about}</p>
       </div>
   );
-
-    return(
-      <div id="userProfile">
-        <img src="/assets/img/profilepic.jpg" className="profilePic"></img>
-        <div className="pWrapper">
-          <h3 id="ownName">Name Name</h3>
-          <h3 id="ownAge">37</h3>
-        </div>
-        <p id="ownAbout">I like travel and reading #escapism</p>
-      </div>
-  );
 };
 
+//list of other user's profiles
 const ProfileList = (props) => {
   const [profiles, setProfiles] = useState(props.profiles);
-
   useEffect(() => {
+    
+    
     const loadProfilesFromServer = async () => {
-      const response = await fetch ('/search');
+    
+    /* attempt at a search function- it throws an error
+      const name = document.querySelector('#searchName').value;
+      const age = document.querySelector('#searchAge').value;
+      const about = document.querySelector('#searchAbout').value;
+
+      const response = await fetch ('/search' + 
+      new URLSearchParams({name: name, age: age, about: about}).toString,
+      {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }});
+    */
+      const response = await fetch ('/getProfiles');
       const data = await response.json();
       setProfiles(data.profiles);
     };
     loadProfilesFromServer();
   }, [props.reloadProfiles]);
+
 
   if(profiles.length === 0) {
     return (
@@ -160,20 +172,9 @@ const ProfileList = (props) => {
     </div>
   )
 
-  return(
-    <div className="profileList">
-        <div className="profile">
-        <img src="/assets/img/profilepic.jpg" alt="profile picture" className="profilePic" />
-        <div className="pWrapper">
-          <h3 className="profileName">Name Name</h3>
-          <h3 className="profileAge">38</h3>
-        </div>
-        <p className="profileAbout">Looking for someone who loves escapism</p>
-      </div>
-    </div>
-  )
 };
 
+//vertical banner ad- would probably have an image in a full version but it's just text here
 const AdSpace = (props) => {
   return(
     <div id="advert">

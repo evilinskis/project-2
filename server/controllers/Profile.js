@@ -4,6 +4,7 @@ const { Profile } = models;
 
 const mainPage = (req, res) => res.render('app');
 
+//make a profile for the user
 const makeProfile = async (req, res) => {
   if (!req.body.name || !req.body.age || !req.body.about) {
     return res.status(400).json({ error: 'All fields are required!' });
@@ -20,19 +21,26 @@ const makeProfile = async (req, res) => {
   // or make a new one if it doesn't exist
   try {
     const query = { owner: req.session.account._id };
-    const docs = await Profile.find(query).select('name age about').lean().exec();
-    if (docs.length === 0) {
+    let docs = await Profile.findOne(query).select('name age about').lean().exec();
+    console.log(docs);
+
+    if (docs === null) {
+      console.log("null");
       const newProfile = new Profile(profileData);
       await newProfile.save();
       return res.status(201).json({
         name: newProfile.name, age: newProfile.age, about: newProfile.about,
       });
     }
+    else{
+      
+      Profile.updateOne({owner: req.session.account._id},
+      {name: profileData.name});
 
-    Profile.findOneAndUpdate(query, profileData);
-    return res.status(201).json({
-      name: profileData.name, age: profileData.age, about: profileData.about,
-    });
+      return res.status(201).json({
+        name: profileData.name, age: profileData.age, about: profileData.about,
+      });
+    }
   } catch (err) {
     console.log(err);
     if (err.code === 11000) {
@@ -46,7 +54,7 @@ const makeProfile = async (req, res) => {
 const getOwnProfile = async (req, res) => {
   try {
     const query = { owner: req.session.account._id };
-    const docs = await Profile.find(query).select('name age about').lean().exec();
+    const docs = await Profile.findOne(query).select('name age about').lean().exec();
 
     return res.json({ profile: docs });
   } catch (err) {
@@ -57,8 +65,11 @@ const getOwnProfile = async (req, res) => {
 
 // Get all the profiles of all users to show
 const getProfiles = async (req, res) => {
+
   try {
-    const docs = await Profile.find().select('name age about').lean().exec();
+    //query doesn't do anything for whatever reason
+    const query = { owner: {$ne: req.session.account_id}};
+    let docs = await Profile.find(query).select('name age about').lean().exec();
 
     return res.json({ profiles: docs });
   } catch (err) {
@@ -70,18 +81,18 @@ const getProfiles = async (req, res) => {
 // find profiles based on search parameters
 const searchProfiles = async (req, res) => {
   try {
-    let docs;
+
+    //if there's no search parameters just get all of them
+    if(!req.query.name && !req.query.age && !req.query.about){
+      const docs = await Profile.find().select('name age about').lean().exec();
+    }
 
     // search with each parameter (if it exists) to narrow down results
-    if (req.body.name) {
-      docs = await Profile.find({ name: req.body.name }).select('name age about').lean().exec();
-    }
-    if (req.body.age) {
-      docs = await Profile.find({ age: req.body.age }).select('name age about').lean().exec();
-    }
-    if (req.body.about) {
-      docs = await Profile.find({ about: req.body.about }).select('name age about').lean().exec();
-    }
+    const docs = await Profile.find({$or:[
+    {name: req.query.name},
+    {age: req.query.age},
+    {about: req.query.about}
+    ]}).select('name age about').lean().exec();
 
     return res.json({ profiles: docs });
   } catch (err) {
@@ -89,15 +100,6 @@ const searchProfiles = async (req, res) => {
     return res.status(500).json({ error: 'Error retrieving profiles!' });
   }
 };
-
-/*
-function checkOwner(docs, req) {
-  docs.forEach((profile) => {
-    if (profile.owner === req.session.account._id) {
-    }
-  });
-}
-*/
 
 module.exports = {
   mainPage,

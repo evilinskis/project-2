@@ -13,7 +13,7 @@ body {
 #logo {
     height: 50x;
     width: 50px;
-    padding-top: 35px;
+    padding-top: 25px;
 }
 
 nav {
@@ -34,7 +34,7 @@ nav {
 h1{
     padding-top: 5px;
     padding-left: 20px;
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 nav:nth-child(1) {
@@ -139,6 +139,8 @@ nav:nth-child(1) {
     padding: 5px;
     text-decoration: none;
     border-style: none;
+    color: white;
+    font-size: 1.1em;
 }
 
 .formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
@@ -190,6 +192,7 @@ img.profilePic {
 
 h3.emptyProfile {
     text-align: center;
+    color: black;
 }
 
 h3.profileName {
@@ -256,6 +259,7 @@ p.profileAbout {
     height: 100vh;
     text-align: center;
     background-color: white;
+    color: black;
     border: 2px solid black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

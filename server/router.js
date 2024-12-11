@@ -14,7 +14,7 @@ const router = (app) => {
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
   app.get('/main', mid.requiresLogin, controllers.Profile.mainPage);
-  app.post('/main', mid.requiresLogin, controllers.Profile.makeProfile);
+  app.post('/makeProfile', mid.requiresLogin, controllers.Profile.makeProfile);
   app.post('/search', mid.requiresLogin, controllers.Profile.searchProfiles);
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
